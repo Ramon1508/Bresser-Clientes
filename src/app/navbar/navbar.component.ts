@@ -1,0 +1,18 @@
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../Services/user-service.service';
+
+@Component({
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
+})
+export class NavbarComponent implements OnInit {
+
+  constructor(public userservice: UserService) { }
+
+  ngOnInit() {
+  }
+  logout() {
+    this.userservice.Desconectar();
+  }
+}
