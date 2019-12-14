@@ -1,0 +1,9 @@
+.card {
+    margin: 15px;
+}
+.imgcontainer {
+    padding: 10px;
+}
+.card-title{
+    color: rgba(0,0,0,.5);
+}

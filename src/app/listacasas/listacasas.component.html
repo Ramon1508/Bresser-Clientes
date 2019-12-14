@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-3" *ngFor="let item of Casas">
+        <a class="card">
+            <div class="imgcontainer container">
+                <img class="card-img-top" src="{{item.imagenes[0]}}" alt="Card image cap">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{item.titulo}}</h5>
+                <p class="card-text">Para más información da clic en la tarjeta.</p>
+                <div class="btn-group" data-toggle="buttons">
+                    <button class="btn btn-lg btn-outline-success" (click)="abreMaps(item)">
+                        <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn btn-lg btn-primary" (click)="abreDireccion(item)">
+                        <i class="fa fa-map" aria-hidden="true"></i>
+                    </button>
+                  </div>
+            </div>
+        </a>
+    </div>
+</div>
