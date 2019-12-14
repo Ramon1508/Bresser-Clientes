@@ -59,6 +59,7 @@ export class UserService {
   Verificarcorreo(correo: string, entonces, error) {
     this.crud.db.collection('Usuarios')
     .where('correo', '==', correo)
+    .where('tipo', '==', 3)
     .get().then((res) => {
       if (res.size === 0) {
         entonces();
@@ -77,7 +78,7 @@ export class UserService {
     exito, error
     ) {
     this.crud.db.collection('Usuarios')
-    .where('tipo', '==', 3)
+    .where('tipo', '==', 2)
     .get().then(snap => {
       const max = snap.size;
       const randomIndex = Math.floor(Math.random() * max);
@@ -96,6 +97,11 @@ export class UserService {
         agente_id: agente.id
       };
       this.crud.db.collection('Usuarios').add(this.Usuario).then(() => {
+        const Token = {
+          User: this.Usuario.correo,
+          contraseña: this.Usuario.contraseña
+        };
+        localStorage.setItem('Token', JSON.stringify(Token));
         exito();
       }).catch(() => {
         error();

@@ -28,4 +28,54 @@ export class DbService {
     this.db = firebase.firestore();
     this.storage = firebase.storage();
   }
+  insert(coleccion: string, objeto: any, entonces, cachar) {
+    this.db.collection(coleccion).add(objeto)
+      .then(function(docRef) {
+          console.log('Document written with ID: ', docRef.id);
+          entonces(docRef);
+        }
+      )
+      .catch(function(error) {
+          console.error('Error adding document: ', error);
+          cachar(error);
+        }
+      );
+  }
+  select(coleccion: string, entonces) {
+    this.db.collection(coleccion).get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+            console.log(`${doc.id} => ${doc.data()}`);
+            var documento = doc.data();
+            documento.id = doc.id;
+            entonces(documento);
+          }
+        );
+      }
+    );
+  }
+  delete(colection: string, ID: string, entonces, errores) {
+    this.db.collection(colection).doc(ID).delete().then(function() {
+      console.log('Documento eliminado');
+      entonces();
+    }).catch(function(error) {
+      console.error('Error al remover: ', error);
+      errores(error);
+    });
+  }
+  selectOne(coleccion: string, condicion: string, valorcondicion, entonces) {
+    this.db.collection(coleccion)
+    .where(condicion, '==', valorcondicion)
+    .limit(1)
+    .get()
+    .then(
+      (querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            const docu = doc.data();
+            docu.id = doc.id;
+            entonces(docu);
+          }
+        );
+      }
+    );
+  }
 }

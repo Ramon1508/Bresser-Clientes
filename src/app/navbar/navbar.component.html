@@ -18,7 +18,7 @@
           <button (click)="logout()" class="dropdown-item">Cerrar sesión</button>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="userservice.Usuario == null">
         <a class="nav-link" [routerLink]="[ '/Login' ]" routerLinkActive="active">Inicia sesión</a>
       </li>
     </ul>
