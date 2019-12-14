@@ -1,4 +1,5 @@
 export interface Propiedad {
+  id?: string;
   propietario_id: string;
   precio: number;
   tipoVenta: number;
@@ -6,4 +7,5 @@ export interface Propiedad {
   cp: string;
   latitud: number;
   longitud: number;
+  timestamp: number;
 }
