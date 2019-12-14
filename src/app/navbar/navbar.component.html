@@ -9,7 +9,7 @@
         <a class="nav-link">Bienvenido {{userservice.Usuario.Nombre}}<span class="sr-only"></span></a>
       </li>
       <!-- AGREGA CODIGO DE VENTANAS -->
-
+      
       <li class="nav-item dropdown" *ngIf="userservice.Usuario != null">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Mi cuenta
@@ -17,7 +17,9 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <button (click)="logout()" class="dropdown-item">Cerrar sesión</button>
         </div>
-        <a class="nav-link" <a [routerLink]="[ '/login' ]">Inicia sesión></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="[ '/Login' ]" routerLinkActive="active">Inicia sesión</a>
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">

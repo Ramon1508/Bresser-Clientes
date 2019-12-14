@@ -29,7 +29,11 @@ export class UserService {
     }
   }
   Conectar(usuario: string, contraseña: string, exito, error) {
-    this.crud.db.collection('Usuarios').where('correo', '==', usuario).where('contraseña', '==', contraseña).limit(1).get().then((res) => {
+    this.crud.db.collection('Usuarios')
+    .where('correo', '==', usuario)
+    .where('contraseña', '==', contraseña)
+    .where('tipo', '==', 3)
+    .limit(1).get().then((res) => {
       if (res.size > 0) {
         res.forEach((doc) => {
           this.Usuario = JSON.parse(JSON.stringify(doc.data()));
@@ -52,8 +56,10 @@ export class UserService {
     this.Usuario = null;
     localStorage.removeItem('Token');
   }
-  async Verificarcorreo(correo: string, entonces, error) {
-    this.crud.db.collection('Usuarios').where('correo', '==', correo).get().then((res) => {
+  Verificarcorreo(correo: string, entonces, error) {
+    this.crud.db.collection('Usuarios')
+    .where('correo', '==', correo)
+    .get().then((res) => {
       if (res.size === 0) {
         entonces();
       } else {
@@ -64,24 +70,36 @@ export class UserService {
   Registrar(
     nombre: string,
     apellido: string,
-    usuario: string,
+    correo: string,
     contraseña: string,
     foto: string,
     telefono: string,
     exito, error
     ) {
-    this.Usuario = {
-      nombre,
-      correo: usuario,
-      contraseña,
-      foto,
-      apellido,
-      telefono
-    };
-    this.crud.db.collection('Usuarios').add(this.Usuario).then(() => {
-      exito();
-    }).catch(() => {
-      error();
+    this.crud.db.collection('Usuarios')
+    .where('tipo', '==', 3)
+    .get().then(snap => {
+      const max = snap.size;
+      const randomIndex = Math.floor(Math.random() * max);
+      const agente = snap.docs[randomIndex].data();
+      agente.id = snap.docs[randomIndex].id;
+      console.log(agente);
+      this.Usuario = {
+        nombre,
+        correo,
+        contraseña,
+        foto,
+        apellido,
+        telefono,
+        tipo: 3,
+        favoritos: [],
+        agente_id: agente.id
+      };
+      this.crud.db.collection('Usuarios').add(this.Usuario).then(() => {
+        exito();
+      }).catch(() => {
+        error();
+      });
     });
   }
 }

@@ -1,11 +1,12 @@
 export interface Usuario {
-  nombre: string;
   id?: string;
+  nombre: string;
+  apellido: string;
   foto: string;
   correo: string;
   contraseña: string;
-  apellido: string;
   telefono: string;
+  tipo: number;
   agente_id?: string;
   favoritos?: string[];
 }
