@@ -1,0 +1,44 @@
+.ctn {
+    padding:50px;
+}
+.bodycar {
+    background-color:#222;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.lbl {
+    color: whitesmoke;
+}
+.carousel {
+    position:relative;
+    padding: 0px;
+    width: 620px;
+    height: 420px;
+    border:10px solid white;
+    margin:20px;
+    box-shadow:0px 0px 40px #000;
+}
+.center-left {
+    width: 100px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 13%;
+    transform: translate(-50%, -50%);
+}
+.center-right {
+    width: 100px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translate(-50%, -50%);
+}
+img {
+    width: 600px;
+    height: 400px;
+}
+.product-price {
+    color: #D10024;
+}

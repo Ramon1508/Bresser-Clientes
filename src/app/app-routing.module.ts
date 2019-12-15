@@ -4,13 +4,15 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { UnacasaComponent } from './unacasa/unacasa.component';
+import { ListacasasComponent } from './listacasas/listacasas.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'SignUp', component: RegistroComponent },
-  { path: 'Detalles', component: UnacasaComponent },
+  { path: 'Detalles/:id', component: UnacasaComponent },
+  { path: 'Busqueda/:id', component: ListacasasComponent },
 ];
 
 @NgModule({

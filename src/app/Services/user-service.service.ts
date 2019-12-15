@@ -16,11 +16,10 @@ export class UserService {
       .where('correo', '==', userlogin.User)
       .where('contraseña', '==', userlogin.contraseña)
       .limit(1)
-      .get()
-      .then((res) => {
+      .onSnapshot((res) => {
         res.forEach((doc) => {
           this.Usuario = JSON.parse(JSON.stringify(doc.data()));
-          delete this.Usuario.contraseña;
+          this.Usuario.id = doc.id;
         });
         if (res.size === 0) {
           this.Desconectar();
@@ -29,6 +28,7 @@ export class UserService {
     }
   }
   Conectar(usuario: string, contraseña: string, exito, error) {
+    usuario = usuario.toLowerCase();
     this.crud.db.collection('Usuarios')
     .where('correo', '==', usuario)
     .where('contraseña', '==', contraseña)
@@ -77,6 +77,7 @@ export class UserService {
     telefono: string,
     exito, error
     ) {
+    correo = correo.toLowerCase();
     this.crud.db.collection('Usuarios')
     .where('tipo', '==', 2)
     .get().then(snap => {

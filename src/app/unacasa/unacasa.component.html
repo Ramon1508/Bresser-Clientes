@@ -1,1 +1,42 @@
-<p>unacasa works!</p>
+<div class="ctn" *ngIf="casa != null">
+    <h1 align="center"><b>{{casa.titulo}}</b></h1>
+    <h3 align="center" class="product-price">
+        <b>
+            {{casa.precio.toLocaleString('es-MX', { style: 'currency', currency: 'MXN'})}}
+        </b>
+    </h3>
+    <div align="center">
+        <button class="btn btn-danger" (click)="cambiafab()" [disabled]="!likehabilitado">
+            <i *ngIf="!esfavorita" class="fa fa-lg fa-heart-o" aria-hidden="true"></i>
+            <i *ngIf="esfavorita" class="fa fa-lg fa-heart" aria-hidden="true"></i>
+        </button>
+    </div>
+    <br>
+    <div class="bodycar">
+        <div>
+            <img src="{{casa.imagenes[indiceimagen]}}" />
+        </div>
+        <div align="center" class="center-left d-flex align-items-center" (click)="anterior()">
+            <label class="lbl">Anterior</label>
+        </div>
+        <div align="center" class="center-right d-flex align-items-center" (click)="siguiente()">
+            <label class="lbl">Siguiente</label>
+        </div>
+    </div>
+    <hr>
+    <h4><b>{{casa.titulo}}</b></h4>
+    <h5 [innerHTML]="casa.descripcion" align="justify"></h5>
+    <br>
+    <h4><b>Domicilio:</b></h4>
+    <h5 [innerHTML] = "casa.domicilio"></h5>
+    <h5>Código postal: {{casa.cp}}</h5>
+</div>
+<div align="center" *ngIf="casa == null">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <img src="assets/imgs/cargando.gif">
+</div>
