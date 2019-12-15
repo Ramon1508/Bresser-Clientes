@@ -18,12 +18,18 @@ export class UnacasaComponent implements OnInit {
     const self = this;
     const id = _route.snapshot.paramMap.get("id");
     crud.db.collection('Propiedades').doc(id).onSnapshot((snap) => {
+      if (snap.data() == undefined || snap.data() == null){
+        location.href = "/"
+      }
       const casa: Propiedad = JSON.parse(JSON.stringify(snap.data()));
       casa.precio = parseFloat(casa.precio.toString());
       casa.id = snap.id;
       self.casa = casa;
       self.esfavorita = uservice.Usuario.favoritos.indexOf(casa.id) != -1;
       self.likehabilitado = true;
+      if(!casa.estado){
+        location.href = "/"
+      }
     })
   }
   anterior(){

@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   Casas: Propiedad[] = [];
   constructor(public crud: DbService) {
     const self = this;
-    crud.db.collection('Propiedades').onSnapshot((SnapShots) => {
+    crud.db.collection('Propiedades').where("estado", "==", true).onSnapshot((SnapShots) => {
       SnapShots.forEach(element => {
         const casa: Propiedad = JSON.parse(JSON.stringify(element.data()));
         casa.precio = parseFloat(casa.precio.toString());
