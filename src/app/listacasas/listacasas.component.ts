@@ -19,8 +19,10 @@ export class ListacasasComponent implements OnInit {
       SnapShots.forEach(element => {
         const casa: Propiedad = JSON.parse(JSON.stringify(element.data()));
         casa.precio = parseFloat(casa.precio.toString());
-        casa.id = element.id;
-        self.Casas.push(casa);
+        if (JSON.stringify(casa).toLowerCase().includes(busqueda.toLowerCase())){
+          casa.id = element.id;
+          self.Casas.push(casa);
+        }
       });
     })
   }

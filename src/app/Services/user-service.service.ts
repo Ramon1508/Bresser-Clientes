@@ -14,7 +14,7 @@ export class UserService {
       const userlogin = JSON.parse(this.Token);
       crud.db.collection('Usuarios')
       .where('correo', '==', userlogin.User)
-      .where('contraseña', '==', userlogin.contraseña)
+      .where('contrasena', '==', userlogin.contrasena)
       .limit(1)
       .onSnapshot((res) => {
         res.forEach((doc) => {
@@ -27,11 +27,11 @@ export class UserService {
       });
     }
   }
-  Conectar(usuario: string, contraseña: string, exito, error) {
+  Conectar(usuario: string, contrasena: string, exito, error) {
     usuario = usuario.toLowerCase();
     this.crud.db.collection('Usuarios')
     .where('correo', '==', usuario)
-    .where('contraseña', '==', contraseña)
+    .where('contrasena', '==', contrasena)
     .where('tipo', '==', 3)
     .limit(1).get().then((res) => {
       if (res.size > 0) {
@@ -39,10 +39,10 @@ export class UserService {
           this.Usuario = JSON.parse(JSON.stringify(doc.data()));
           const Token = {
             User: this.Usuario.correo,
-            contraseña: this.Usuario.contraseña
+            contrasena: this.Usuario.contrasena
           };
           localStorage.setItem('Token', JSON.stringify(Token));
-          delete this.Usuario.contraseña;
+          delete this.Usuario.contrasena;
           exito();
         });
       } else {
@@ -72,7 +72,7 @@ export class UserService {
     nombre: string,
     apellido: string,
     correo: string,
-    contraseña: string,
+    contrasena: string,
     foto: string,
     telefono: string,
     exito, error
@@ -89,7 +89,7 @@ export class UserService {
       this.Usuario = {
         nombre,
         correo,
-        contraseña,
+        contrasena,
         foto,
         apellido,
         telefono,
@@ -100,7 +100,7 @@ export class UserService {
       this.crud.db.collection('Usuarios').add(this.Usuario).then(() => {
         const Token = {
           User: this.Usuario.correo,
-          contraseña: this.Usuario.contraseña
+          contrasena: this.Usuario.contrasena
         };
         localStorage.setItem('Token', JSON.stringify(Token));
         exito();
