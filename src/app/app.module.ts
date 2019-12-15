@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RegistroComponent } from './registro/registro.component';
 import { ListacasasComponent } from './listacasas/listacasas.component';
 import { UnacasaComponent } from './unacasa/unacasa.component';
+import { ContactoasesorComponent } from './contactoasesor/contactoasesor.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { UnacasaComponent } from './unacasa/unacasa.component';
     FooterComponent,
     RegistroComponent,
     ListacasasComponent,
-    UnacasaComponent
+    UnacasaComponent,
+    ContactoasesorComponent
   ],
   imports: [
     BrowserModule,

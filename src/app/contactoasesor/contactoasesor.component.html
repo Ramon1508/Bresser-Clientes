@@ -1,0 +1,22 @@
+<div *ngIf="agente != null" align="center">
+    <h1>Tu agente asignado es: {{agente.nombre}} {{agente.apellido}}</h1>
+    <br>
+    <img width="400" height="300" style="border-radius: 5px;" src="{{agente.foto}}">
+    <br><br>
+    <H2>
+        Su teléfono es: <a href="tel:{{agente.telefono}}">{{agente.telefono}}</a>
+    </H2>
+    <br>
+    <H2>
+        Su correo es: <a href="mailto:{{agente.correo}}">{{agente.correo}}</a>
+    </H2>
+</div>
+<div align="center" *ngIf="agente == null">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <img src="assets/imgs/cargando.gif">
+</div>

@@ -1,0 +1,38 @@
+[debug] [2019-12-15T06:30:18.552Z] ----------------------------------------------------------------------
+[debug] [2019-12-15T06:30:18.555Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\valen\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-12-15T06:30:18.555Z] CLI Version:   7.9.0
+[debug] [2019-12-15T06:30:18.555Z] Platform:      win32
+[debug] [2019-12-15T06:30:18.555Z] Node Version:  v10.16.3
+[debug] [2019-12-15T06:30:18.557Z] Time:          Sat Dec 14 2019 23:30:18 GMT-0700 (GMT-07:00)
+[debug] [2019-12-15T06:30:18.557Z] ----------------------------------------------------------------------
+[debug] [2019-12-15T06:30:18.557Z] 
+[debug] [2019-12-15T06:30:18.568Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-12-15T06:30:18.568Z] > authorizing via signed-in user
+[debug] [2019-12-15T06:30:18.568Z] [iam] checking project bresser for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-12-15T06:30:18.570Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-12-15T06:30:18.570Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-12-15T06:30:19.367Z] <<< HTTP RESPONSE 200
+[debug] [2019-12-15T06:30:19.412Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/bresser:testIamPermissions  
+
+[debug] [2019-12-15T06:30:20.306Z] <<< HTTP RESPONSE 200
+[debug] [2019-12-15T06:30:20.308Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/bresser  
+ 
+[debug] [2019-12-15T06:30:21.257Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'bresser'...
+[info] 
+[info] i  deploying hosting
+[debug] [2019-12-15T06:30:21.263Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/bresser/versions  
+
+[debug] [2019-12-15T06:30:23.072Z] <<< HTTP RESPONSE 200
+[info] i  hosting[bresser]: beginning deploy...
+[info] i  hosting[bresser]: found 31 files in ./dist/Bresser
+[debug] [2019-12-15T06:30:23.093Z] [hosting] hash cache [ZGlzdFxCcmVzc2Vy] not populated
+[debug] [2019-12-15T06:30:25.949Z] [hosting] hash cache [ZGlzdFxCcmVzc2Vy] stored for 31 files
+[debug] [2019-12-15T06:30:25.950Z] [hosting][hash queue][FINAL]
+[debug] [2019-12-15T06:30:25.950Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/bresser/versions/06870df3d5da06f0:populateFiles  
+ <request body omitted>
+[debug] [2019-12-15T06:30:27.489Z] <<< HTTP RESPONSE 200
+[debug] [2019-12-15T06:30:27.515Z] [hosting][populate queue][FINAL]
+[debug] [2019-12-15T06:30:27.515Z] [hosting] uploads queued: 31
